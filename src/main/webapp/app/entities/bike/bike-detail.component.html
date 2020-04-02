@@ -1,0 +1,40 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="bike">
+            <h2><span>Bike</span> {{ bike.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span>Model</span></dt>
+                <dd>
+                    <span>{{ bike.model }}</span>
+                </dd>
+                <dt><span>Serial No</span></dt>
+                <dd>
+                    <span>{{ bike.serialNo }}</span>
+                </dd>
+                <dt><span>Biker</span></dt>
+                <dd>
+                    <div *ngIf="bike.biker">
+                        <a [routerLink]="['/biker', bike.biker?.id, 'view']">{{ bike.biker?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/bike', bike.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+            </button>
+        </div>
+    </div>
+</div>
